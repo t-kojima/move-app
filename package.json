@@ -1,0 +1,41 @@
+{
+  "name": "move-app",
+  "version": "1.0.0",
+  "description": "It can copy kintone app over the space.",
+  "main": "index.js",
+  "repository": "git@github.com:t-kojima/move-app.git",
+  "author": "t-kojima <t-kojima@hokuichi-e.com>",
+  "license": "MIT",
+  "keywords": [
+    "kintone"
+  ],
+  "homepage": "https://github.com/t-kojima/move-app",
+  "bugs": {
+    "url": "https://github.com/t-kojima/move-app/issues"
+  },
+  "engines": {
+    "node": ">=8.9"
+  },
+  "dependencies": {
+    "cac": "^5.0.10",
+    "jsonschema": "^1.2.4",
+    "node-fetch": "^2.1.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.9.1",
+    "prettier": "^1.13.5"
+  },
+  "eslintConfig": {
+    "extends": "airbnb",
+    "plugins": [
+      "import"
+    ]
+  },
+  "bin": {
+    "copy": "./bin/index.js"
+  }
+}
