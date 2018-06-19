@@ -17,6 +17,7 @@
     "node": ">=8.9"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "cac": "^5.0.10",
     "jsonschema": "^1.2.4",
     "node-fetch": "^2.1.2"
