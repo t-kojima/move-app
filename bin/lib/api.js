@@ -12,26 +12,12 @@ exports.create = async () => {
   const {
     domain, app, username, password,
   } = await config.load();
-  // const axios = axiosbase.create({
-  //   baseURL: `http://${domain}`,
-  //   headers: {
-  //     'X-Cybozu-Authorization': Buffer.from(`${username}:${password}`).toString('base64'),
-  //     'Content-Type': 'application/json',
-  //     Host: `${domain}:443`,
-  //   },
-  //   responseType: 'json',
-  // });
 
-  const url = '/k/v1/preview/app.json';
   const body = {
     name: 'テスト',
     // space: 1,
     // thread: 1
   };
-
-  // eslint-disable-next-line no-console
-  console.info(`Fetch api from ${url}`);
-  console.info(body);
 
   const response = await axios({
     method: 'post',
@@ -42,6 +28,25 @@ exports.create = async () => {
       Host: `${domain}:443`,
     },
     data: body,
+  });
+  return JSON.stringify(response.data, null, '  ');
+};
+
+exports.deploy = async (body) => {
+  const {
+    domain, app, username, password,
+  } = await config.load();
+  const response = await axios({
+    method: 'post',
+    url: `https://${domain}/k/v1/preview/app/deploy.json`,
+    headers: {
+      'X-Cybozu-Authorization': Buffer.from(`${username}:${password}`).toString('base64'),
+      'Content-Type': 'application/json',
+      Host: `${domain}:443`,
+    },
+    data: {
+      apps: [body],
+    },
   });
   return JSON.stringify(response.data, null, '  ');
 };
