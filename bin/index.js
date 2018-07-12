@@ -3,11 +3,12 @@
 /* eslint-disable no-console */
 
 const cac = require('cac');
-const util = require('util');
 
 const config = require('./lib/config');
 const api = require('./lib/api');
 const settings = require('./lib/api/settings');
+const fields = require('./lib/api/fields');
+const layout = require('./lib/api/layout');
 // const template = require('./lib/template')
 
 const cli = cac();
@@ -28,30 +29,24 @@ cli.command('clone', 'clone', async () => {
     // .then(res => api.deploy(res.app, res.revision))
     .then(() => settings.get())
     .then(res => settings.put(25, res))
+    .then(() => fields.get())
+    .then(res => fields.post(25, res))
+    .then(() => layout.get())
+    .then(res => layout.put(25, res))
     .then(() => api.deploy(25, -1))
-    // .then(res => console.info(res))
     .catch((err) => {
       console.error(err);
     });
-  //   // console.log(util.inspect(
-  //   //   `
-  //   // [Request]
-  //   // ${err.config}
-  //   // [Response]
-  //   //   Status : ${err.response.status}
-  //   //   Message: ${err.response.statusText}
-  //   //   Data   : ${err.response.data}
-  //   // `,
-  //   //   false,
-  //   //   null,
-  //   // ));
-  //   console.error('[Request]');
-  //   console.error(err.config.headers);
-  //   console.error('[Response]');
-  //   console.error(` Status : ${err.response.status}`);
-  //   console.error(` Message: ${err.response.statusText}`);
-  //   console.error(` Data   : ${err.response.data}`);
-  // });
+});
+
+cli.command('delete', 'delete', async () => {
+  Promise.resolve()
+    .then(() => fields.get())
+    .then(res => fields.delete(25, res))
+    // .then(() => api.deploy(25, -1))
+    .catch((err) => {
+      console.error(err);
+    });
 });
 
 const fetchCommand = cli.command(
