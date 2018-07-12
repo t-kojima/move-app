@@ -49,7 +49,13 @@ exports.init = async () => {
   }
 };
 
+let config = {};
+
 exports.load = async () => {
+  if (Object.keys(config).length) {
+    return config;
+  }
+
   const readFile = async () => {
     const json = await promisify(fs.readFile)(FILE_PATH, ENCODING).catch(() => {
       throw new Error(`${FILE_PATH} can not read.`);
@@ -64,7 +70,9 @@ exports.load = async () => {
     }
   };
 
-  const config = await readFile();
+  config = await readFile();
   validate(config);
   return config;
 };
+
+exports.app = config.app;
