@@ -16,10 +16,7 @@ const schema = {
     domain: { type: 'string', pattern: '[a-zA-Z0-9-]+.cybozu.com' },
     username: { type: 'string' },
     password: { type: 'string' },
-    app: {
-      type: ['integer', 'array'],
-      items: { type: 'integer' },
-    },
+    app: { type: 'integer' },
   },
 };
 
