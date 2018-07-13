@@ -24,7 +24,7 @@ cli.command('*', 'Display help <default>', () => {
 });
 
 cli.command('init', 'Create an authentication template.', () => {
-  config.init().catch((err) => {
+  config.init().catch(err => {
     console.error(err);
   });
 });
@@ -47,7 +47,9 @@ cli.command('clone', 'clone', async () => {
     await deploy(to, -1);
     console.info(green('\nApp Cloning Successfully.'));
   } catch (e) {
-    console.error(red(`Error: ${e.response.statusText} [${e.response.status}]`));
+    console.error(
+      red(`Error: ${e.response.statusText} [${e.response.status}]`)
+    );
     console.error(e.response.data);
   }
 });
@@ -62,7 +64,9 @@ cli.command('delete', 'delete', async () => {
     await fields.get(2).then(res => fields.delete(25, res));
     console.info(green('\nApp Deleted Successfully.'));
   } catch (e) {
-    console.error(red(`Error: ${e.response.statusText} [${e.response.status}]`));
+    console.error(
+      red(`Error: ${e.response.statusText} [${e.response.status}]`)
+    );
     console.error(e.response.data);
   }
 });

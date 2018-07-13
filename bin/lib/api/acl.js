@@ -4,7 +4,7 @@ const { get, put } = require('../api');
 const { green } = require('../colors');
 
 exports.app = {
-  get: async (app) => {
+  get: async app => {
     const response = await get('/app/acl.json', { app });
     return response;
   },
@@ -17,7 +17,7 @@ exports.app = {
 };
 
 exports.record = {
-  get: async (app) => {
+  get: async app => {
     const response = await get('/record/acl.json', { app });
     return response;
   },
@@ -30,7 +30,7 @@ exports.record = {
 };
 
 exports.field = {
-  get: async (app) => {
+  get: async app => {
     const response = await get('/field/acl.json', { app });
     return response;
   },

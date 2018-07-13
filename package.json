@@ -20,22 +20,17 @@
     "axios": "^0.18.0",
     "cac": "^5.0.10",
     "form-data": "^2.3.2",
-    "jsonschema": "^1.2.4",
-    "node-fetch": "^2.1.2"
+    "jsonschema": "^1.2.4"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.9.1",
-    "prettier": "^1.13.5"
-  },
-  "eslintConfig": {
-    "extends": "airbnb",
-    "plugins": [
-      "import"
-    ]
+    "prettier": "^1.13.7"
   },
   "bin": {
     "copy": "./bin/index.js"

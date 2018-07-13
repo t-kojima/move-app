@@ -3,7 +3,7 @@
 const { get, put } = require('../api');
 const { green } = require('../colors');
 
-exports.get = async (app) => {
+exports.get = async app => {
   const response = await get('/app/settings.json', { app });
   return response;
 };

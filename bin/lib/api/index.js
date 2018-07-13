@@ -5,15 +5,15 @@ const axios = require('axios');
 const { green } = require('../colors');
 
 const request = async (method, uri, body) => {
-  const {
-    domain, app, username, password,
-  } = await config.load();
+  const { domain, app, username, password } = await config.load();
 
   const response = await axios({
     method,
     url: `https://${domain}/k/v1${uri}`,
     headers: {
-      'X-Cybozu-Authorization': Buffer.from(`${username}:${password}`).toString('base64'),
+      'X-Cybozu-Authorization': Buffer.from(`${username}:${password}`).toString(
+        'base64'
+      ),
       'Content-Type': 'application/json',
       Host: `${domain}:443`,
     },
@@ -36,9 +36,7 @@ exports.create = async () => {
 
   const response = await this.post('/preview/app.json', body);
   console.info(`${green('Create Success')} [app: ${response.app}]`);
-  const {
-    domain, app, username, password,
-  } = await config.load();
+  const { domain, app, username, password } = await config.load();
   return {
     from: app,
     to: response.app,

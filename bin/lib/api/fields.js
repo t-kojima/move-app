@@ -3,7 +3,7 @@
 const { get, post, del } = require('../api');
 const { green } = require('../colors');
 
-exports.get = async (app) => {
+exports.get = async app => {
   const response = await get('/app/form/fields.json', { app });
   return response;
 };
@@ -22,7 +22,9 @@ exports.post = async (app, data) => {
   delete data.properties['更新日時'];
 
   await post('/preview/app/form/fields.json', data);
-  console.info(`${green('Copy Fields')} [field: ${Object.keys(data.properties).length}]`);
+  console.info(
+    `${green('Copy Fields')} [field: ${Object.keys(data.properties).length}]`
+  );
   console.info(Object.keys(data.properties));
 };
 
