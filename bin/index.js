@@ -12,6 +12,7 @@ const layout = require('./lib/api/layout');
 const views = require('./lib/api/views');
 const acl = require('./lib/api/acl');
 const status = require('./lib/api/status');
+const customize = require('./lib/api/customize');
 // const template = require('./lib/template')
 
 const { green, red } = require('./lib/colors');
@@ -52,7 +53,7 @@ cli.command('clone', 'clone', async () => {
 });
 
 cli.command('test', 'test', async () => {
-  await status.get(2).then(res => status.put(25, res));
+  await customize.get(2).then(res => customize.put(25, res));
 });
 
 cli.command('delete', 'delete', async () => {
